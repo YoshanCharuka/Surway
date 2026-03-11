@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <body className={`${roboto.variable} antialiased flex flex-col min-h-screen font-sans`}>
+    <body suppressHydrationWarning className={`${roboto.variable} antialiased flex flex-col min-h-screen font-sans`}>
         {/* 1. Navbar: Placed here so it persists across all tabs */}
         <Navbar />
 

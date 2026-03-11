@@ -22,20 +22,20 @@ const services: ServiceItem[] = [
 
 export default function Services() {
   return (
-    <section id="services-section" className=" snap-start h-screen relative z-0 overflow-hidden bg-[#FBFBFB] pt-12 pb-24">
+    <section id="services-section" className="snap-start min-h-screen relative z-0 overflow-hidden bg-[#FBFBFB] pt-12 pb-20 md:pb-24">
       <div className="pointer-events-none absolute inset-0 opacity-5">
         <Image src="/images/topo-pattern.png" alt="Topographic pattern" fill className="object-cover" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <div className="mx-auto mb-16 text-center">
-          <h2 className="text-4xl font-bold text-[#0D1B2A] md:text-5xl">Our Services</h2>
-          <p className="mt-4 text-xl font-medium text-gray-500">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#0D1B2A] md:text-5xl">Our Services</h2>
+          <p className="mt-4 text-base sm:text-lg md:text-xl font-medium text-gray-500">
             Comprehensive Surveying Solutions for Your Land & Constructions Needs
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center max-w-6xl mx-auto md:space-y-0 space-y-8">
+        <div className="flex flex-wrap justify-center max-w-6xl mx-auto gap-y-6 sm:gap-y-8">
           {services.map((service, index) => {
             let staggerClass = "";
 
@@ -43,7 +43,7 @@ export default function Services() {
               // Specifically TARGETING Static Survey to go UP
               // Adjust 10 to 0 if you want it perfectly level with the top row
               staggerClass = "md:translate-y-1"; 
-            } else if (index % 2 !== 0) {
+            } else if (index % 2 === 1) {
               // Others remain in the "Down" position
               staggerClass = "md:translate-y-24";
             } else {
@@ -54,13 +54,13 @@ export default function Services() {
             return (
             <div
               key={service.title}
-              className={`relative transition-all duration-300 hover:z-50 hover:scale-110 md:-mx-5 ${staggerClass}`}
+              className={`relative transition-all duration-300 hover:z-50 hover:scale-[1.02] md:hover:scale-110 md:-mx-5 ${staggerClass}`}
               style={{
                 filter: "drop-shadow(0px 4px 20px rgba(0,0,0,0.05))"
               }}
             >
               <article
-                className="relative flex h-[240px] w-[270px] shrink-0 items-center justify-center bg-white text-center"
+                className="relative flex h-[220px] w-[240px] sm:h-[240px] sm:w-[270px] shrink-0 items-center justify-center bg-white text-center"
                 style={{
                   clipPath: "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
                 }}

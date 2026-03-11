@@ -33,9 +33,6 @@ const testimonials = [
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Calculate how many items to show based on screen size (default 3 for desktop)
-  const itemsToShow = 1; // On mobile we show 1, you can refine this with media queries
-
   const nextSlide = () => {
     if (currentIndex < testimonials.length - 1) {
       setCurrentIndex((prev) => prev + 1);
@@ -52,8 +49,8 @@ export default function Testimonials() {
     <section className="bg-[#FBFBFB] py-24 overflow-hidden ">
       <div className="mx-auto max-w-7xl px-6 text-center">
         {/* HEADER SECTION */}
-        <h2 className="text-4xl font-bold text-[#0D1B2A] md:text-5xl">What Our Clients Say</h2>
-        <p className="mt-4 text-lg font-medium text-gray-500">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#0D1B2A] md:text-5xl">What Our Clients Say</h2>
+        <p className="mt-4 text-base sm:text-lg font-medium text-gray-500">
           Comprehensive Real State Solutions for All Your Needs
         </p>
 
@@ -64,14 +61,14 @@ export default function Testimonials() {
             className="flex transition-transform duration-500 ease-out gap-8"
             style={{ transform: `translateX(-${currentIndex * (100 / 1)}%)` }} // Adjust math if showing multiple
           >
-            {testimonials.map((item, index) => (
+            {testimonials.map((item) => (
               <div
-                key={index}
-                className="flex-shrink-0 w-full md:w-[calc(33.333%-22px)] flex flex-col rounded-2xl bg-white p-8 text-left shadow-[0_10px_40px_rgba(0,0,0,0.04)]"
+                key={`${item.name}-${item.location}`}
+                className="flex-shrink-0 w-full md:w-[calc(33.333%-22px)] flex flex-col rounded-2xl bg-white p-6 sm:p-8 text-left shadow-[0_10px_40px_rgba(0,0,0,0.04)]"
               >
-                <h3 className="mb-6 text-2xl font-bold text-[#0D1B2A]">Exceptional Service!</h3>
-                <p className="mb-8 text-base leading-relaxed text-gray-600 italic">
-                  "{item.text}"
+                <h3 className="mb-6 text-xl sm:text-2xl font-bold text-[#0D1B2A]">Exceptional Service!</h3>
+                <p className="mb-8 text-sm sm:text-base leading-relaxed text-gray-600 italic">
+                  &ldquo;{item.text}&rdquo;
                 </p>
 
                 {/* CLIENT INFO FOOTER */}

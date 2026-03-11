@@ -1,16 +1,13 @@
 "use client";
 
-import Image from "next/image";
-
 import Link from "next/link";
-import { Facebook, Phone, Linkedin, Mail, MapPin } from "lucide-react";
-import { MessageCircle } from "lucide-react";
+import { FacebookIcon, LinkedinIcon, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#111111] text-white py-16 px-10 md:px-20">
+    <footer className="bg-[#111111] text-white py-14 md:py-16 px-6 sm:px-8 md:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
         
         {/* Logo and About Section */}
@@ -31,7 +28,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-gray-400 transition-colors"
             >
-              <Facebook size={24} />
+              <FacebookIcon size={24} />
             </Link>
             <Link href="https://wa.me/94773742486" 
                   target="_blank" 
@@ -47,7 +44,7 @@ export default function Footer() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="hover:text-gray-400 transition-colors">
-              <Linkedin size={24} />
+              <LinkedinIcon size={24} />
             </Link>
           </div>
         </div>
@@ -102,7 +99,7 @@ export default function Footer() {
         {/* Map Preview Column */}
 <div className="lg:col-span-1">
   <Link href="https://www.google.com/maps/search/?api=1&query=Wegro+Ceylon+Maharagama" target="_blank">
-    <div className="rounded-2xl overflow-hidden h-48 w-full shadow-lg border border-gray-800 transition-all duration-300 hover:z-50 hover:scale-110">
+    <div className="rounded-2xl overflow-hidden h-48 w-full shadow-lg border border-gray-800 transition-all duration-300 hover:scale-[1.02] md:hover:scale-110">
       <img 
         src="/images/map-placeholder.png" 
         alt="Office Location Map" 

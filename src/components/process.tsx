@@ -29,8 +29,8 @@ export default function HowItWorks() {
   return (
     <section className="relative z-0 overflow-hidden py-24 ">
       <div className="mx-auto max-w-7xl px-6 text-center">
-        <h2 className="text-4xl font-bold text-[#0D1B2A] md:text-5xl">How it Works</h2>
-        <p className="mt-4 text-lg font-medium text-gray-500">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#0D1B2A] md:text-5xl">How it Works</h2>
+        <p className="mt-4 text-base sm:text-lg font-medium text-gray-500">
           Comprehensive Surveying Solutions for your Land & Constructions Needs
         </p>
 
@@ -51,10 +51,10 @@ export default function HowItWorks() {
           </svg>
 
           <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-6">
-            {steps.map((step, index) => (
-              <div key={index} className="relative z-10 flex flex-col items-center">
+            {steps.map((step) => (
+              <div key={step.title} className="relative z-10 flex flex-col items-center">
                 {/* IMAGE CONTAINER */}
-                <div className="relative h-73 w-73 mb-6">
+                <div className="relative h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72 mb-6">
                   <Image
                     src={step.image}
                     alt={step.title}
@@ -64,7 +64,7 @@ export default function HowItWorks() {
                 </div>
 
                 {/* TEXT CONTENT */}
-                <h3 className="text-xl font-bold text-[#0D1B2A] mb-3 leading-tight px-4">
+                <h3 className="text-lg sm:text-xl font-bold text-[#0D1B2A] mb-3 leading-tight px-4">
                   {step.title}
                 </h3>
                 <p className="text-sm text-gray-600 leading-relaxed px-2">

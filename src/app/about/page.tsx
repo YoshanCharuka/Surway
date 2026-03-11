@@ -2,24 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { MoveRight, Cpu, Microscope, Drill, Binary, Layers } from "lucide-react";
+import { MoveRight } from "lucide-react";
 
 export default function AboutUs() {
   return (
     <main className="bg-[#fbfbfb] selection:bg-[#3D2B1F] selection:text-white ">
       
      {/* 1. HERO: The "Statement" (Minimal & Bold) */}
-      <section className="relative pt-40 pb-20 px-6 lg:px-25 min-h-[100vh] flex flex-col justify-center">
+      <section className="relative pt-28 sm:pt-32 md:pt-40 pb-16 sm:pb-20 px-6 lg:px-20 min-h-[100vh] flex flex-col justify-center">
         <div className="max-w-5xl">
           <span className="text-[#A32A29] font-bold tracking-[0.3em] uppercase text-xs mb-6 block">
             ESTABLISHED 2012 | SRI LANKA
           </span>
-          <h1 className="text-6xl md:text-8xl font-bold text-[#0D1B2A] leading-[0.9] tracking-tighter mb-10">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-[#0D1B2A] leading-[0.95] tracking-tighter mb-8 sm:mb-10">
             Precision in every <br />
             <span className="text-[#4A2B10] italic font-light">coordinate.</span>
           </h1>
-          <p className="text-2xl text-gray-500 max-w-2xl leading-relaxed">
-            We don't just measure land. We provide the mathematical certainty required for the nation's most ambitious infrastructure.
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-500 max-w-2xl leading-relaxed">
+            We don&apos;t just measure land. We provide the mathematical certainty required for the nation&apos;s most ambitious infrastructure.
           </p>
         </div>
         
@@ -44,10 +44,10 @@ export default function AboutUs() {
       </section>
 
       {/* 2. THE STAGGERED VISION/MISSION (Using your preferred layout) */}
-      <section className="py-24 px-6 lg:px-25">
+      <section className="py-16 sm:py-20 md:py-24 px-6 lg:px-20">
         <div className="max-w-6xl mx-auto space-y-32">
           {/* Vision */}
-          <div className="flex flex-col md:flex-row items-center gap-16">
+          <div className="flex flex-col md:flex-row items-center gap-10 sm:gap-12 md:gap-16">
             <div className="relative w-full md:w-3/5 group">
               <div className="absolute -top-6 -left-6 w-full h-full bg-[#A32A29]/5 rounded-2xl -z-10 transition-transform group-hover:scale-105" />
               <div className="relative h-[450px] w-full rounded-2xl overflow-hidden shadow-2xl">
@@ -55,18 +55,18 @@ export default function AboutUs() {
               </div>
             </div>
             <div className="w-full md:w-2/5">
-              <h2 className="text-5xl font-bold text-[#0D1B2A] mb-6">Our Vision</h2>
-              <p className="text-xl text-gray-600 leading-relaxed font-light">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0D1B2A] mb-6">Our Vision</h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed font-light">
                 To be the primary architect of geospatial data, ensuring every foundation in the region is built upon absolute mathematical truth.
               </p>
             </div>
           </div>
 
           {/* Mission */}
-          <div className="flex flex-col-reverse md:flex-row items-center gap-16">
-            <div className="w-full md:w-2/5 text-right">
-              <h2 className="text-5xl font-bold text-[#0D1B2A] mb-6">Our Mission</h2>
-              <p className="text-xl text-gray-600 leading-relaxed font-light">
+          <div className="flex flex-col-reverse md:flex-row items-center gap-10 sm:gap-12 md:gap-16">
+            <div className="w-full md:w-2/5 text-left md:text-right">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0D1B2A] mb-6">Our Mission</h2>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed font-light">
                 Merging drone-assisted photogrammetry with traditional field expertise to deliver high-fidelity survey plans that exceed regulatory standards.
               </p>
             </div>
@@ -108,12 +108,12 @@ export default function AboutUs() {
       </section>*/}
 
     {/* 4. TECHNOLOGY & VALUES: The "Details" Section */}
-<section className="py-32 px-6 lg:px-20 max-w-7xl mx-auto">
-  <div className="grid lg:grid-cols-12 gap-0 items-start">
+<section className="py-20 md:py-32 px-6 lg:px-20 max-w-7xl mx-auto">
+  <div className="grid lg:grid-cols-12 gap-8 md:gap-10 items-start">
     <div className="lg:col-span-5 space-y-10">
-      <h2 className="text-5xl font-bold text-[#0D1B2A]">Technology & Approach</h2>
-      <p className="text-lg text-gray-600 leading-relaxed">
-        We utilize a proprietary blend of 20 Stations, GNSS Receivers, and DJI Enterprise Drones. Field data is processed using specialized GIS and CAD software, producing survey plans that aren't just accurate—they are digital assets for your future development.
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0D1B2A]">Technology & Approach</h2>
+      <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+        We utilize a proprietary blend of 20 Stations, GNSS Receivers, and DJI Enterprise Drones. Field data is processed using specialized GIS and CAD software, producing survey plans that aren&apos;t just accurate; they are digital assets for your future development.
       </p>
       <div className="pt-6 space-y-6">
           <div className="flex items-center gap-4 text-xl font-bold text-[#0D1B2A]">
@@ -127,17 +127,17 @@ export default function AboutUs() {
           </div>
       </div>
     </div>
-    <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-4">
-       <div className="h-80 relative rounded-3xl overflow-hidden mt-12">
+     <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+       <div className="h-52 sm:h-64 md:h-80 relative rounded-3xl overflow-hidden mt-4 sm:mt-8 md:mt-12">
           <Image src="/images/t1.jpg" fill alt="Hardware" className="object-cover" />
        </div>
-       <div className="h-80 relative rounded-3xl overflow-hidden">
+       <div className="h-52 sm:h-64 md:h-80 relative rounded-3xl overflow-hidden">
           <Image src="/images/t2.jpg" fill alt="CAD Software" className="object-cover" />
        </div>
-       <div className="h-80 relative rounded-3xl overflow-hidden mt-12 md:mt-24">
+       <div className="h-52 sm:h-64 md:h-80 relative rounded-3xl overflow-hidden mt-4 sm:mt-8 md:mt-24">
           <Image src="/images/t3.jpg" fill alt="Field Work" className="object-cover" />
        </div>
-       <div className="h-80 relative rounded-3xl overflow-hidden">
+       <div className="h-52 sm:h-64 md:h-80 relative rounded-3xl overflow-hidden">
           <Image src="/images/t4.png" fill alt="Field Work" className="object-cover" />
        </div>
     </div>

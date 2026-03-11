@@ -12,6 +12,12 @@ const faqData = [
   { id: 6, question: "How do I request for a survey?", answer: "Answer details go here..." },
 ];
 
+type FaqItem = {
+  id: number;
+  question: string;
+  answer: string;
+};
+
 // Animation variants for the entrance
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -82,7 +88,7 @@ export default function FAQ() {
   );
 }
 
-function FAQCard({ item, isOpen, toggle }: { item: any; isOpen: boolean; toggle: () => void }) {
+function FAQCard({ item, isOpen, toggle }: Readonly<{ item: FaqItem; isOpen: boolean; toggle: () => void }>) {
   return (
     <motion.div 
       layout

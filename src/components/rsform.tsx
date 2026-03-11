@@ -1,15 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { MapPin } from "lucide-react";
 
+const PRICE_PER_PERCH = 25000;
+const DISTANCE_MAP: Record<string, string> = {
+  "nugegoda": "5 km",
+  "kotte": "8 km",
+  "pannipitiya": "3 km",
+  "homagama": "10 km",
+  "colombo": "15 km",
+  "maharagama": "0 km"
+};
+
 export default function RSForm() {
-  const [isClient, setIsClient] = useState(false);
   const [formData, setFormData] = useState({
     location: "",
-    distance: "",
     perches: "",
-    estimatedValue: "",
     name: "",
     email: "",
     phone: "",
@@ -17,91 +24,61 @@ export default function RSForm() {
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  // --- CONFIGURATION ---
-  const PRICE_PER_PERCH = 25000;
-  const distanceMap: Record<string, string> = {
-    "nugegoda": "5 km",
-    "kotte": "8 km",
-    "pannipitiya": "3 km",
-    "homagama": "10 km",
-    "colombo": "15 km",
-    "maharagama": "0 km"
-  };
-
-  // 1. Handle Hydration: Only render after mounting on client
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // 2. Logic: Automatic Calculations
-  useEffect(() => {
-    if (!isClient) return;
-
+  const derivedFields = useMemo(() => {
     const loc = formData.location.toLowerCase().trim();
-    const perchCount = parseFloat(formData.perches);
-    const updates: Partial<typeof formData> = {};
+    const perchCount = Number.parseFloat(formData.perches);
 
-    // Calculate Distance
-    const newDistance = distanceMap[loc] || "";
-    if (newDistance !== formData.distance) {
-      updates.distance = newDistance;
-    }
-
-    // Calculate Estimated Value
-    let newValue = "";
-    if (!isNaN(perchCount)) {
+    const distance = DISTANCE_MAP[loc] || "";
+    let estimatedValue = "";
+    if (!Number.isNaN(perchCount)) {
       const total = perchCount * PRICE_PER_PERCH;
-      newValue = `Rs. ${total.toLocaleString()}`;
-    }
-    if (newValue !== formData.estimatedValue) {
-      updates.estimatedValue = newValue;
+      estimatedValue = `Rs. ${total.toLocaleString()}`;
     }
 
-    // Only update state if there is an actual change to prevent loops
-    if (Object.keys(updates).length > 0) {
-      setFormData(prev => ({ ...prev, ...updates }));
-    }
-  }, [formData.location, formData.perches, isClient]);
+    return { distance, estimatedValue };
+  }, [formData.location, formData.perches]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     setStatus("loading");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, ...derivedFields }),
       });
       if (res.ok) {
         setStatus("success");
-        setFormData({ location: "", distance: "", perches: "", estimatedValue: "", name: "", email: "", phone: "" });
+        setFormData({ location: "", perches: "", name: "", email: "", phone: "" });
         setTimeout(() => setStatus("idle"), 4000);
       } else {
         setStatus("error");
       }
-    } catch (err) {
+    } catch {
       setStatus("error");
     }
   };
 
-  // Prevent Hydration Mismatch by returning null or a skeleton until mounted
-  if (!isClient) {
-    return <div className="max-w-5xl mx-auto h-[600px] bg-gray-50 animate-pulse rounded-3xl" />;
+  let submitLabel = "Request Survey";
+  if (status === "loading") {
+    submitLabel = "Sending...";
+  } else if (status === "success") {
+    submitLabel = "Sent Successfully!";
   }
 
   return (
-    <section className="bg-[#FBFBFB] pt-8 pb-24 px-6">
+    <section className="bg-[#FBFBFB] pt-8 pb-16 md:pb-24 px-4 sm:px-6">
       <div className="mx-auto max-w-5xl">
         <div className="mb-10 mt-6 text-center">
-          <h2 className="text-4xl font-bold text-[#0D1B2A] md:text-5xl">Get Quick Estimate</h2>
-          <p className="mt-4 text-xl font-medium text-gray-700">Distance and Price are calculated automatically based on input.</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#0D1B2A] md:text-5xl">Get Quick Estimate</h2>
+          <p className="mt-4 text-base sm:text-lg md:text-xl font-medium text-gray-700">Distance and Price are calculated automatically based on input.</p>
         </div>
 
-        <div className="rounded-3xl bg-white p-8 shadow-sm md:p-14 border border-gray-100">
+        <div className="rounded-3xl bg-white p-5 sm:p-8 shadow-sm md:p-14 border border-gray-100">
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 md:grid-cols-2">
             
             <div className="relative">
@@ -118,7 +95,7 @@ export default function RSForm() {
             
             <input
               name="distance"
-              value={formData.distance}
+              value={derivedFields.distance}
               readOnly
               placeholder="Distance (Auto-calculated)"
               className="w-full rounded-xl bg-[#E5E7EB] p-4 outline-none cursor-not-allowed text-gray-600"
@@ -136,7 +113,7 @@ export default function RSForm() {
             
             <input
               name="estimatedValue"
-              value={formData.estimatedValue}
+              value={derivedFields.estimatedValue}
               readOnly
               placeholder="Estimated Value (Auto-calculated)"
               className="w-full rounded-xl bg-[#E5E7EB] p-4 outline-none cursor-not-allowed text-gray-600 "
@@ -149,11 +126,11 @@ export default function RSForm() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className={`w-full rounded-xl py-4 text-lg font-bold text-white transition-all ${
+              className={`w-full rounded-xl py-4 text-base sm:text-lg font-bold text-white transition-all md:col-span-2 ${
                 status === "success" ? "bg-green-600" : "bg-[#3D2B1F] hover:bg-[#2A1D15]"
               }`}
             >
-              {status === "loading" ? "Sending..." : status === "success" ? "Sent Successfully!" : "Request Survey"}
+              {submitLabel}
             </button>
             
             {status === "error" && <p className="text-red-500 text-sm text-center col-span-full">Something went wrong. Please try again.</p>}
