@@ -27,7 +27,16 @@ export async function GET() {
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown database error";
     console.error("Database error:", error);
-    throw new Error(message);
+    return Response.json(
+      {
+        success: false,
+        error: message,
+        items: [],
+        pricePerPerch: null,
+        configMap: {},
+      },
+      { status: 500 },
+    );
   }
 }
 
