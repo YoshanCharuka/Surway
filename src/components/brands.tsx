@@ -28,12 +28,12 @@ export default function Brands() {
           {featuredLogos.map((logo) => (
             <div
               key={logo.src}
-              className="overflow-x-auto rounded-2xl bg-white px-4 py-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] sm:px-8 sm:py-6"
+              className="flex items-center justify-center rounded-2xl bg-white px-3 py-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] sm:px-8 sm:py-6"
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="mx-auto h-auto min-w-[560px] max-h-28 object-contain sm:min-w-0 sm:w-full sm:max-h-48"
+                className="mx-auto h-auto w-full max-h-32 object-contain sm:max-h-48"
               />
             </div>
           ))}
