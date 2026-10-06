@@ -2,16 +2,7 @@
 
 import { useMemo, useState, useEffect } from "react";
 import { MapPin } from "lucide-react";
-import { resolveItemRate, type QuotationItem } from "@/lib/quotation";
-
-const DISTANCE_MAP: Record<string, string> = {
-  "nugegoda": "5 km",
-  "kotte": "8 km",
-  "pannipitiya": "3 km",
-  "homagama": "10 km",
-  "colombo": "15 km",
-  "maharagama": "0 km"
-};
+import { estimateSurveyCost, resolvePricePerKm, resolvePricePerPerch } from "@/lib/quotation";
 
 export default function RSForm() {
   const [formData, setFormData] = useState({
@@ -23,9 +14,13 @@ export default function RSForm() {
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [items, setItems] = useState<QuotationItem[]>([]);
   const [pricePerPerch, setPricePerPerch] = useState<number | null>(null);
+  const [pricePerKm, setPricePerKm] = useState<number | null>(null);
+  const [distanceKm, setDistanceKm] = useState<number | null>(null);
   const [ratesError, setRatesError] = useState("");
+  const [distance, setDistance] = useState("");
+  const [distanceStatus, setDistanceStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [distanceError, setDistanceError] = useState("");
 
   useEffect(() => {
     const fetchRates = async () => {
@@ -33,8 +28,9 @@ export default function RSForm() {
         const res = await fetch("/api/locations");
         const data = await res.json().catch(() => null);
         if (res.ok && data?.success) {
-          setItems(Array.isArray(data.items) ? data.items : []);
-          setPricePerPerch(typeof data.pricePerPerch === "number" ? data.pricePerPerch : null);
+          const nextItems = Array.isArray(data.items) ? data.items : [];
+          setPricePerPerch(resolvePricePerPerch(nextItems));
+          setPricePerKm(resolvePricePerKm(nextItems));
           setRatesError("");
           return;
         }
@@ -48,20 +44,69 @@ export default function RSForm() {
     fetchRates();
   }, []);
 
-  const derivedFields = useMemo(() => {
-    const loc = formData.location.toLowerCase().trim();
-    const perchCount = Number.parseFloat(formData.perches);
-    const itemRate = resolveItemRate(loc, items, pricePerPerch);
-
-    const distance = DISTANCE_MAP[loc] || "";
-    let estimatedValue = "";
-    if (!Number.isNaN(perchCount) && itemRate !== null) {
-      const total = perchCount * itemRate;
-      estimatedValue = `Rs. ${total.toLocaleString()}`;
+  useEffect(() => {
+    const query = formData.location.trim();
+    if (query.length < 2) {
+      setDistance("");
+      setDistanceKm(null);
+      setDistanceStatus("idle");
+      setDistanceError("");
+      return;
     }
 
-    return { distance, estimatedValue };
-  }, [formData.location, formData.perches, items, pricePerPerch]);
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      setDistance("");
+      setDistanceKm(null);
+      setDistanceStatus("loading");
+      setDistanceError("");
+      try {
+        const res = await fetch(`/api/distance?location=${encodeURIComponent(query)}`, {
+          signal: controller.signal,
+        });
+        const data = await res.json().catch(() => null);
+        if (res.ok && data?.success && typeof data.distance === "string") {
+          setDistance(data.distance);
+          setDistanceKm(typeof data.kilometers === "number" ? data.kilometers : null);
+          setDistanceStatus("idle");
+          return;
+        }
+        setDistance("");
+        setDistanceKm(null);
+        setDistanceStatus("error");
+        setDistanceError(data?.error || "Could not calculate distance.");
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
+        setDistance("");
+        setDistanceKm(null);
+        setDistanceStatus("error");
+        setDistanceError("Could not calculate distance.");
+      }
+    }, 700);
+
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+  }, [formData.location]);
+
+  const derivedFields = useMemo(() => {
+    const perchCount = Number.parseFloat(formData.perches);
+    const total = estimateSurveyCost(
+      Number.isNaN(perchCount) ? null : perchCount,
+      distanceKm,
+      pricePerPerch,
+      pricePerKm,
+    );
+
+    const estimatedValue = total === null
+      ? ""
+      : `Rs. ${total.toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
+
+    return { estimatedValue };
+  }, [formData.perches, distanceKm, pricePerPerch, pricePerKm]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -74,7 +119,7 @@ export default function RSForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, ...derivedFields }),
+        body: JSON.stringify({ ...formData, distance, ...derivedFields }),
       });
       if (res.ok) {
         setStatus("success");
@@ -120,9 +165,9 @@ export default function RSForm() {
             
             <input
               name="distance"
-              value={derivedFields.distance}
+              value={distance}
               readOnly
-              placeholder="Distance (Auto-calculated)"
+              placeholder={distanceStatus === "loading" ? "Calculating distance..." : "Distance (Auto-calculated)"}
               className="w-full rounded-xl bg-[#E5E7EB] p-4 outline-none cursor-not-allowed text-gray-600"
             />
 
@@ -158,6 +203,11 @@ export default function RSForm() {
               {submitLabel}
             </button>
             
+            {distanceError && (
+              <p className="text-red-500 text-sm text-center col-span-full">
+                {distanceError}
+              </p>
+            )}
             {ratesError && (
               <p className="text-red-500 text-sm text-center col-span-full">
                 {ratesError}

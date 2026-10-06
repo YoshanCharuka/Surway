@@ -1,6 +1,6 @@
 import type { PoolConnection } from "mysql2/promise";
 import { getDbConnection } from "@/lib/db";
-import { normalizeItems, resolvePricePerPerch, type QuotationItem } from "@/lib/quotation";
+import { normalizeItems, resolvePricePerKm, resolvePricePerPerch, type QuotationItem } from "@/lib/quotation";
 
 const TABLE_CANDIDATES = [
   process.env.WP_QUOTATION_TABLE,
@@ -14,6 +14,7 @@ export async function GET() {
   try {
     const items = await fetchQuotationItems();
     const pricePerPerch = resolvePricePerPerch(items);
+    const pricePerKm = resolvePricePerKm(items);
     const configMap = Object.fromEntries(
       items.map((item) => [item.name.toLowerCase(), item.rate]),
     );
@@ -22,6 +23,7 @@ export async function GET() {
       success: true,
       items,
       pricePerPerch,
+      pricePerKm,
       configMap,
     });
   } catch (error) {
@@ -33,6 +35,7 @@ export async function GET() {
         error: message,
         items: [],
         pricePerPerch: null,
+        pricePerKm: null,
         configMap: {},
       },
       { status: 500 },

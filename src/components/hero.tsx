@@ -8,10 +8,15 @@ export default function Home() {
     <div className="relative min-h-screen w-full">
       {/* 1. Background Image - The Base Layer */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/images/hero.png" 
-          alt="Surveyor at work" 
-          className="w-full h-full object-cover"
+        <img
+          src="/images/hero-mobile.jpg"
+          alt="Surveyor at work"
+          className="h-full w-full object-cover object-[center_20%] md:hidden"
+        />
+        <img
+          src="/images/hero.png"
+          alt=""
+          className="hidden h-full w-full object-cover md:block"
         />
         <div className="absolute inset-0 bg-black/20" />
       </div>
@@ -35,7 +40,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button 
                 onClick={() => document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-6 sm:px-8 py-3 border-2 border-[#4A2B10] text-[#4A2B10] font-bold rounded-xl hover:bg-white/10 transition w-full sm:w-auto"
+                  className="px-6 sm:px-8 py-3 bg-white border-2 border-white text-[#4A2B10] font-bold rounded-xl hover:bg-white/85 transition w-full sm:w-auto"
                 >
                 Browse Services 
               </button>

@@ -3,14 +3,9 @@ export type QuotationItem = {
   rate: number;
 };
 
-const PERCH_RATE_KEYS = [
-  "price per perch",
-  "price_per_perch",
-  "perch rate",
-  "rate per perch",
-  "perch",
-  "perches",
-];
+function rateName(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
 
 export function toRate(value: unknown): number | null {
   if (typeof value === "number" && Number.isFinite(value)) {
@@ -39,33 +34,37 @@ export function normalizeItems(
 }
 
 export function resolvePricePerPerch(items: QuotationItem[]): number | null {
-  const byName = new Map(items.map((item) => [item.name.toLowerCase(), item.rate]));
-
-  for (const key of PERCH_RATE_KEYS) {
-    const rate = byName.get(key);
-    if (rate !== undefined) {
-      return rate;
-    }
-  }
-
-  const perchItem = items.find((item) => item.name.toLowerCase().includes("perch"));
-  if (perchItem) {
-    return perchItem.rate;
-  }
-
-  return items[0]?.rate ?? null;
+  const match = items.find((item) => {
+    const key = rateName(item.name);
+    return key.includes("pearch") || key.includes("perch");
+  });
+  return match?.rate ?? null;
 }
 
-export function resolveItemRate(
-  location: string,
-  items: QuotationItem[],
-  fallbackRate: number | null,
-): number | null {
-  const loc = location.toLowerCase().trim();
-  if (!loc) {
-    return fallbackRate;
-  }
+export function resolvePricePerKm(items: QuotationItem[]): number | null {
+  const match = items.find((item) => {
+    const key = rateName(item.name);
+    return key.includes("perkm") || key.includes("perkilometer") || key.includes("perkilometre");
+  });
+  return match?.rate ?? null;
+}
 
-  const match = items.find((item) => item.name.toLowerCase() === loc);
-  return match?.rate ?? fallbackRate;
+export function estimateSurveyCost(
+  perches: number | null,
+  kilometers: number | null,
+  pricePerPerch: number | null,
+  pricePerKm: number | null,
+): number | null {
+  const perchPart = perches !== null && pricePerPerch !== null ? perches * pricePerPerch : null;
+  const kmPart = kilometers !== null && pricePerKm !== null ? kilometers * pricePerKm : null;
+  if (pricePerPerch !== null && perchPart === null) {
+    return null;
+  }
+  if (pricePerKm !== null && kmPart === null) {
+    return null;
+  }
+  if (perchPart === null && kmPart === null) {
+    return null;
+  }
+  return (perchPart ?? 0) + (kmPart ?? 0);
 }
