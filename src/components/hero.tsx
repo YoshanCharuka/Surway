@@ -20,7 +20,7 @@ export default function Home() {
       <div className="relative z-10 flex flex-col min-h-screen">
        
         
-        <main className="grow flex items-start md:items-center px-4 sm:px-6 md:px-12 lg:px-20 pt-24 md:pt-16 pb-10">
+        <div className="grow flex items-start md:items-center px-4 sm:px-6 md:px-12 lg:px-20 pt-24 md:pt-16 pb-10">
           <div className="max-w-3xl w-full space-y-6 sm:space-y-8">
             <div className="space-y-4 sm:space-y-5">
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#0D1B2A] leading-tight">
@@ -54,7 +54,7 @@ export default function Home() {
               <StatCard number={98} suffix="%" label="Client Satisfaction" /> 
             </div>
           </div>
-        </main>
+        </div>
       </div>
     </div>
   );

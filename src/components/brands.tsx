@@ -1,18 +1,24 @@
-const featuredLogos = [
-  {
-    src: "/images/brands/institutions-row.png",
-    alt: "Ceylon Electricity Board, NAITA, Open University of Sri Lanka, University of Moratuwa, Department of Irrigation, and National Water Supply and Drainage Board",
-  },
+const secondRowLogos = [
   {
     src: "/images/brands/nwsdb-nara-susl.png",
     alt: "National Water Supply and Drainage Board, NARA, and Sabaragamuwa University of Sri Lanka",
+    span: "col-span-3",
   },
-];
-
-const brandCards = [
-  { src: "/images/brands/colombo-municipal.png", alt: "Municipal Council of Colombo" },
-  { src: "/images/brands/uda.png", alt: "Urban Development Authority of Sri Lanka" },
-  { src: "/images/brands/mahaweli.png", alt: "Mahaweli Authority of Sri Lanka" },
+  {
+    src: "/images/brands/colombo-municipal.png",
+    alt: "Municipal Council of Colombo",
+    span: "col-span-1",
+  },
+  {
+    src: "/images/brands/uda.png",
+    alt: "Urban Development Authority of Sri Lanka",
+    span: "col-span-1",
+  },
+  {
+    src: "/images/brands/mahaweli.png",
+    alt: "Mahaweli Authority of Sri Lanka",
+    span: "col-span-1",
+  },
 ];
 
 export default function Brands() {
@@ -25,31 +31,22 @@ export default function Brands() {
         </p>
 
         <div className="mt-10 space-y-5 md:mt-16 md:space-y-6">
-          {featuredLogos.map((logo) => (
-            <div
-              key={logo.src}
-              className="flex items-center justify-center rounded-2xl bg-white px-3 py-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] sm:px-8 sm:py-6"
-            >
+          <div className="flex items-center justify-center rounded-2xl bg-white px-3 py-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] sm:px-8 sm:py-6">
+            <img
+              src="/images/brands/institutions-row.png"
+              alt="Ceylon Electricity Board, NAITA, Open University of Sri Lanka, University of Moratuwa, Department of Irrigation, and National Water Supply and Drainage Board"
+              className="mx-auto h-auto w-full max-h-28 object-contain sm:max-h-40"
+            />
+          </div>
+
+          <div className="grid grid-cols-6 items-center gap-1 rounded-2xl bg-white px-2 py-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] sm:gap-3 sm:px-6 sm:py-6">
+            {secondRowLogos.map((logo) => (
               <img
+                key={logo.src}
                 src={logo.src}
                 alt={logo.alt}
-                className="mx-auto h-auto w-full max-h-32 object-contain sm:max-h-48"
+                className={`${logo.span} mx-auto h-auto max-h-24 w-full object-contain sm:max-h-36`}
               />
-            </div>
-          ))}
-
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {brandCards.map((brand) => (
-              <div
-                key={brand.src}
-                className="flex min-h-40 items-center justify-center rounded-2xl bg-white p-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl sm:min-h-48 sm:p-6"
-              >
-                <img
-                  src={brand.src}
-                  alt={brand.alt}
-                  className="max-h-32 w-full object-contain sm:max-h-40"
-                />
-              </div>
             ))}
           </div>
         </div>

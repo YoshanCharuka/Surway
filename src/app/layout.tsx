@@ -29,9 +29,9 @@ export default function RootLayout({
         <Navbar />
 
         {/* 2. Main Content: pt-24 ensures content isn't hidden behind a fixed navbar */}
-        <main className="flex-grow">
+        <div className="flex-grow">
           {children}
-        </main>
+        </div>
 
         {/* 3. Footer: Stays at the bottom of every page */}
         <Footer />
