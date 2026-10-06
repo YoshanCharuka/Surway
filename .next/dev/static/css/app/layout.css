@@ -1754,6 +1754,11 @@
       display: block;
     }
   }
+  .sm\:h-28 {
+    @media (width >= 40rem) {
+      height: calc(var(--spacing) * 28);
+    }
+  }
   .sm\:h-44 {
     @media (width >= 40rem) {
       height: calc(var(--spacing) * 44);
@@ -2046,6 +2051,11 @@
   .md\:hidden {
     @media (width >= 48rem) {
       display: none;
+    }
+  }
+  .md\:h-32 {
+    @media (width >= 48rem) {
+      height: calc(var(--spacing) * 32);
     }
   }
   .md\:h-48 {

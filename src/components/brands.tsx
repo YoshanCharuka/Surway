@@ -1,23 +1,27 @@
 const secondRowLogos = [
   {
-    src: "/images/brands/nwsdb-nara-susl.png",
-    alt: "National Water Supply and Drainage Board, NARA, and Sabaragamuwa University of Sri Lanka",
-    span: "col-span-3",
+    src: "/images/brands/nwsdb.png",
+    alt: "National Water Supply and Drainage Board",
+  },
+  {
+    src: "/images/brands/nara.png",
+    alt: "The National Aquatic Resources Research and Development Agency",
+  },
+  {
+    src: "/images/brands/sabaragamuwa.png",
+    alt: "Sabaragamuwa University of Sri Lanka",
   },
   {
     src: "/images/brands/colombo-municipal.png",
     alt: "Municipal Council of Colombo",
-    span: "col-span-1",
   },
   {
     src: "/images/brands/uda.png",
     alt: "Urban Development Authority of Sri Lanka",
-    span: "col-span-1",
   },
   {
     src: "/images/brands/mahaweli.png",
     alt: "Mahaweli Authority of Sri Lanka",
-    span: "col-span-1",
   },
 ];
 
@@ -39,13 +43,13 @@ export default function Brands() {
             />
           </div>
 
-          <div className="grid grid-cols-6 items-center gap-1 rounded-2xl bg-white px-2 py-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] sm:gap-3 sm:px-6 sm:py-6">
+          <div className="grid grid-cols-6 items-center gap-1 rounded-2xl bg-white px-3 py-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] sm:gap-4 sm:px-8 sm:py-6">
             {secondRowLogos.map((logo) => (
               <img
                 key={logo.src}
                 src={logo.src}
                 alt={logo.alt}
-                className={`${logo.span} mx-auto h-auto max-h-24 w-full object-contain sm:max-h-36`}
+                className="mx-auto h-20 w-full object-contain sm:h-28 md:h-32"
               />
             ))}
           </div>

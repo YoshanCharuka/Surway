@@ -6171,3 +6171,58 @@ Import trace for requested module:
 ./src/components/hero.tsx
 ./src/app/page.tsx
 [00:44:42.046] Server  LOG     ○ Compiling /_error ...
+[00:52:11.920] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:12.174] Browser WARN    Image with src "/images/step1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:12.174] Browser WARN    Image with src "/images/step2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:12.174] Browser WARN    Image with src "/images/step3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:12.174] Browser WARN    Image with src "/images/step4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:12.174] Browser WARN    Image with src "/images/badge.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:12.174] Browser WARN    Image with src "/images/clock.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:12.174] Browser WARN    Image with src "/images/team.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:12.174] Browser WARN    Image with src "/images/shield.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:12.174] Browser WARN    Image with src "/images/team.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:13.106] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:13.514] Browser WARN    Image with src "/images/step1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:13.514] Browser WARN    Image with src "/images/step2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:13.514] Browser WARN    Image with src "/images/step3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:13.514] Browser WARN    Image with src "/images/step4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:13.514] Browser WARN    Image with src "/images/badge.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:13.514] Browser WARN    Image with src "/images/clock.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:13.514] Browser WARN    Image with src "/images/team.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:13.514] Browser WARN    Image with src "/images/shield.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:13.514] Browser WARN    Image with src "/images/team.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:23.129] Server  LOG     ○ Compiling /api/locations ...
+[00:52:24.712] Server  ERROR   Database error: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:52:24.914] Server  ERROR   Database error: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:52:24.920] Browser ERROR   unhandledRejection: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:52:25.214] Browser ERROR   unhandledRejection: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:54:44.258] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:44.604] Server  ERROR   Database error: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:54:44.719] Browser ERROR   unhandledRejection: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:54:46.176] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:46.788] Browser WARN    Image with src "/images/step1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:46.788] Browser WARN    Image with src "/images/step2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:46.788] Browser WARN    Image with src "/images/step3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:46.788] Browser WARN    Image with src "/images/step4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:46.788] Browser WARN    Image with src "/images/badge.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:46.788] Browser WARN    Image with src "/images/clock.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:46.788] Browser WARN    Image with src "/images/team.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:46.788] Browser WARN    Image with src "/images/shield.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:46.788] Browser WARN    Image with src "/images/team.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:52.890] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:53.056] Server  ERROR   Database error: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:54:53.168] Browser ERROR   unhandledRejection: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:55:01.997] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:02.209] Browser WARN    Image with src "/images/step1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:55:02.209] Browser WARN    Image with src "/images/step2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:55:02.209] Browser WARN    Image with src "/images/step3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:55:02.209] Browser WARN    Image with src "/images/step4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:55:04.385] Server  ERROR   Database error: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:55:04.478] Server  ERROR   Database error: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:55:04.590] Browser ERROR   unhandledRejection: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:55:04.590] Browser ERROR   unhandledRejection: Error: Cannot connect to the WordPress database: connect ECONNREFUSED 127.0.0.1:3306
+[00:55:11.208] Browser WARN    Image with src "/images/badge.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:55:11.208] Browser WARN    Image with src "/images/team.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:55:11.208] Browser WARN    Image with src "/images/clock.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:55:11.208] Browser WARN    Image with src "/images/shield.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:55:12.114] Browser WARN    Image with src "/images/team.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
