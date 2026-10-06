@@ -27,14 +27,14 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="relative z-0 overflow-hidden py-24 ">
+    <section className="relative z-0 overflow-hidden py-16 md:py-24 ">
       <div className="mx-auto max-w-7xl px-6 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-[#0D1B2A] md:text-5xl">How it Works</h2>
         <p className="mt-4 text-base sm:text-lg font-medium text-gray-500">
           Comprehensive Surveying Solutions for your Land & Constructions Needs
         </p>
 
-        <div className="relative mt-20">
+        <div className="relative mt-12 md:mt-20">
           {/* THE DOTTED WAVE BEHIND THE IMAGES */}
           <svg
             className="absolute top-1/4 left-0 w-full hidden md:block"
@@ -54,7 +54,7 @@ export default function HowItWorks() {
             {steps.map((step) => (
               <div key={step.title} className="relative z-10 flex flex-col items-center">
                 {/* IMAGE CONTAINER */}
-                <div className="relative h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72 mb-6">
+                <div className="relative h-44 w-44 sm:h-64 sm:w-64 md:h-72 md:w-72 mb-6">
                   <Image
                     src={step.image}
                     alt={step.title}

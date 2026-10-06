@@ -13,6 +13,7 @@
     "@icons-pack/react-simple-icons": "^13.11.1",
     "framer-motion": "^12.34.0",
     "lucide-react": "^0.575.0",
+    "mysql2": "^3.24.5",
     "next": "16.1.6",
     "nodemailer": "^8.0.1",
     "react": "19.2.3",

@@ -20,13 +20,13 @@ export default function Home() {
       <div className="relative z-10 flex flex-col min-h-screen">
        
         
-        <main className="grow flex items-center px-4 sm:px-6 md:px-12 lg:px-20 pt-20 md:pt-16 pb-8">
-          <div className="max-w-3xl space-y-8">
-            <div className="space-y-5">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0D1B2A] leading-tight">
-                Where Accuracy Meets <br /> Expertise 
+        <main className="grow flex items-start md:items-center px-4 sm:px-6 md:px-12 lg:px-20 pt-24 md:pt-16 pb-10">
+          <div className="max-w-3xl w-full space-y-6 sm:space-y-8">
+            <div className="space-y-4 sm:space-y-5">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-[#0D1B2A] leading-tight">
+                Where Accuracy Meets <br className="hidden sm:block" /> Expertise 
               </h1>
-              <p className="text-base sm:text-lg text-[#1E1E1E] font-semibold max-w-lg">
+              <p className="text-sm sm:text-lg text-[#1E1E1E] font-semibold max-w-lg">
                 Expert land and property survey services ensuring clarity, compliance, and peace of mind.
               </p>
             </div>
@@ -39,11 +39,12 @@ export default function Home() {
                 >
                 Browse Services 
               </button>
-              <Link href="/rs">
-  <button className="px-6 sm:px-8 py-3 bg-[#4A2B10] text-white font-bold rounded-xl hover:bg-[#5f340f] transition shadow-lg w-full sm:w-auto">
-    Request Survey
-  </button>
-</Link>
+              <Link
+                href="/rs"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 bg-[#4A2B10] text-white font-bold rounded-xl hover:bg-[#5f340f] transition shadow-lg w-full sm:w-auto"
+              >
+                Request Survey
+              </Link>
             </div>
 
             {/* Stats Cards Section */}

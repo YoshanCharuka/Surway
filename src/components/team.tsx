@@ -14,7 +14,7 @@ const teamMembers = [
 
 export default function MeetOurTeam() {
   return (
-    <section className=" relative z-0 overflow-hidden py-24">
+    <section className=" relative z-0 overflow-hidden py-16 md:py-24">
       {/* BACKGROUND PATTERN */}
       <div className="absolute inset-0 -z-20 opacity-5">
         <Image 

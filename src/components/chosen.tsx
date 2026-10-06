@@ -27,10 +27,10 @@ const benefits = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-[#FBFBFB] py-20">
+    <section className="bg-[#FBFBFB] py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-6 text-center">
         {/* SECTION HEADER */}
-        <h2 className="text-4xl font-bold text-[#0D1B2A] md:text-5xl">Why Choose Us</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#0D1B2A] md:text-5xl">Why Choose Us</h2>
         <p className="mt-4 text-lg font-medium text-gray-500">
           Your Trusted Partner for Professional Surveying Services
         </p>

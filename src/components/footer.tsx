@@ -66,7 +66,7 @@ export default function Footer() {
           <ul className="space-y-4 text-gray-400">
             <li>Land Survey</li>
             <li>Construction Survey</li>
-            <li>Static Survey</li>
+            <li>Surveying Consultancy</li>
             <li>Setting Out Survey</li>
             <li>Topographic Survey</li>
             <li>Condnomium Survey</li>
@@ -87,10 +87,10 @@ export default function Footer() {
                 <Mail size={18} /> info@survey.com
               </Link>
             </li>
-            <li className="flex items-center gap-3">
+            <li className="flex items-start gap-3">
               <Link href="https://www.google.com/maps/search/?api=1&query=Wegro+Ceylon+Maharagama" target="_blank"
-               className="flex items-center gap-3">
-                <MapPin size={36} /> No 47, Welyaya Rd, Nawinna, Maharagama, Sri Lanka
+               className="flex items-start gap-3">
+                <MapPin size={20} className="shrink-0 mt-0.5" /> No 47, Welyaya Rd, Nawinna, Maharagama, Sri Lanka
               </Link>
             </li>
           </ul>

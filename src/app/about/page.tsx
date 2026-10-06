@@ -45,12 +45,12 @@ export default function AboutUs() {
 
       {/* 2. THE STAGGERED VISION/MISSION (Using your preferred layout) */}
       <section className="py-16 sm:py-20 md:py-24 px-6 lg:px-20">
-        <div className="max-w-6xl mx-auto space-y-32">
+        <div className="max-w-6xl mx-auto space-y-16 md:space-y-32">
           {/* Vision */}
           <div className="flex flex-col md:flex-row items-center gap-10 sm:gap-12 md:gap-16">
             <div className="relative w-full md:w-3/5 group">
-              <div className="absolute -top-6 -left-6 w-full h-full bg-[#A32A29]/5 rounded-2xl -z-10 transition-transform group-hover:scale-105" />
-              <div className="relative h-[450px] w-full rounded-2xl overflow-hidden shadow-2xl">
+              <div className="absolute -top-3 -left-3 md:-top-6 md:-left-6 w-full h-full bg-[#A32A29]/5 rounded-2xl -z-10 transition-transform group-hover:scale-105" />
+              <div className="relative h-[240px] sm:h-[360px] md:h-[450px] w-full rounded-2xl overflow-hidden shadow-2xl">
                 <Image src="/images/p1.jpg" alt="Vision" fill className="object-cover" />
               </div>
             </div>
@@ -71,8 +71,8 @@ export default function AboutUs() {
               </p>
             </div>
             <div className="relative w-full md:w-3/5 group">
-              <div className="absolute -bottom-6 -right-6 w-full h-full bg-[#0D1B2A]/5 rounded-2xl -z-10 transition-transform group-hover:scale-105" />
-              <div className="relative h-[450px] w-full rounded-2xl overflow-hidden shadow-2xl">
+              <div className="absolute -bottom-3 -right-3 md:-bottom-6 md:-right-6 w-full h-full bg-[#0D1B2A]/5 rounded-2xl -z-10 transition-transform group-hover:scale-105" />
+              <div className="relative h-[240px] sm:h-[360px] md:h-[450px] w-full rounded-2xl overflow-hidden shadow-2xl">
                 <Image src="/images/p2.jpg" alt="Mission" fill className="object-cover" />
               </div>
             </div>
@@ -146,14 +146,14 @@ export default function AboutUs() {
 
       {/* 5. CALL TO ACTION: The "Dark Card" */}
       <section>
-        <div className="bg-[#3D2B1F]  p-12 lg:p-24 text-center relative overflow-hidden">
+        <div className="bg-[#3D2B1F] p-8 sm:p-12 lg:p-24 text-center relative overflow-hidden">
           <div className="relative z-10 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-10 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-8 sm:mb-10 leading-tight">
               Ready to verify your next big project?
             </h2>
             <Link 
               href="/rs" 
-              className="inline-flex items-center gap-4 bg-white text-[#3D2B1F] px-12 py-6 rounded-full font-black text-xl hover:scale-105 transition-transform"
+              className="inline-flex items-center justify-center gap-3 sm:gap-4 bg-white text-[#3D2B1F] px-6 py-4 sm:px-12 sm:py-6 rounded-full font-black text-base sm:text-xl hover:scale-105 transition-transform w-full sm:w-auto"
             >
               Request a Survey <MoveRight />
             </Link>

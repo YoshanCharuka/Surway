@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { MapPin } from "lucide-react";
+import { resolveItemRate, type QuotationItem } from "@/lib/quotation";
 
-const PRICE_PER_PERCH = 25000;
 const DISTANCE_MAP: Record<string, string> = {
   "nugegoda": "5 km",
   "kotte": "8 km",
@@ -23,20 +23,45 @@ export default function RSForm() {
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [items, setItems] = useState<QuotationItem[]>([]);
+  const [pricePerPerch, setPricePerPerch] = useState<number | null>(null);
+  const [ratesError, setRatesError] = useState("");
+
+  useEffect(() => {
+    const fetchRates = async () => {
+      try {
+        const res = await fetch("/api/locations");
+        const data = await res.json().catch(() => null);
+        if (res.ok && data?.success) {
+          setItems(Array.isArray(data.items) ? data.items : []);
+          setPricePerPerch(typeof data.pricePerPerch === "number" ? data.pricePerPerch : null);
+          setRatesError("");
+          return;
+        }
+        throw new Error(data?.error || data?.message || "Cannot connect to the WordPress database.");
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Cannot connect to the WordPress database.";
+        setRatesError(message);
+        throw error;
+      }
+    };
+    fetchRates();
+  }, []);
 
   const derivedFields = useMemo(() => {
     const loc = formData.location.toLowerCase().trim();
     const perchCount = Number.parseFloat(formData.perches);
+    const itemRate = resolveItemRate(loc, items, pricePerPerch);
 
     const distance = DISTANCE_MAP[loc] || "";
     let estimatedValue = "";
-    if (!Number.isNaN(perchCount)) {
-      const total = perchCount * PRICE_PER_PERCH;
+    if (!Number.isNaN(perchCount) && itemRate !== null) {
+      const total = perchCount * itemRate;
       estimatedValue = `Rs. ${total.toLocaleString()}`;
     }
 
     return { distance, estimatedValue };
-  }, [formData.location, formData.perches]);
+  }, [formData.location, formData.perches, items, pricePerPerch]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -86,9 +111,9 @@ export default function RSForm() {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                placeholder="Enter Location (e.g. Nugegoda)"
+                placeholder="Location (e.g. Nugegoda)"
                 required
-                className="w-full rounded-xl bg-[#F3F4F6] p-4 pr-12 outline-none focus:ring-2 focus:ring-[#3D2B1F]/20"
+                className="w-full rounded-xl bg-[#F3F4F6] p-4 pr-14 outline-none focus:ring-2 focus:ring-[#3D2B1F]/20"
               />
               <MapPin className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
             </div>
@@ -133,6 +158,11 @@ export default function RSForm() {
               {submitLabel}
             </button>
             
+            {ratesError && (
+              <p className="text-red-500 text-sm text-center col-span-full">
+                {ratesError}
+              </p>
+            )}
             {status === "error" && <p className="text-red-500 text-sm text-center col-span-full">Something went wrong. Please try again.</p>}
           </form>
         </div>

@@ -46,7 +46,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="bg-[#FBFBFB] py-24 overflow-hidden ">
+    <section className="bg-[#FBFBFB] py-16 md:py-24 overflow-hidden ">
       <div className="mx-auto max-w-7xl px-6 text-center">
         {/* HEADER SECTION */}
         <h2 className="text-3xl sm:text-4xl font-bold text-[#0D1B2A] md:text-5xl">What Our Clients Say</h2>

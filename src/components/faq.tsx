@@ -40,7 +40,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="bg-[#FBFBFB] py-24">
+    <section className="bg-[#FBFBFB] py-16 md:py-24">
       <motion.div 
         className="mx-auto max-w-7xl px-6"
         initial="hidden"
@@ -50,7 +50,7 @@ export default function FAQ() {
       >
         {/* HEADER ANIMATION */}
         <motion.div variants={cardVariants} className="mb-16 text-center">
-          <h2 className="text-4xl font-bold text-[#0D1B2A] md:text-5xl">Frequently Asked Questions</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#0D1B2A] md:text-5xl">Frequently Asked Questions</h2>
           <p className="mt-4 text-lg font-medium text-gray-500">
             Find Answers to Common Questions About Our Services
           </p>
